@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maziar Davoodi Mehr - Resume</title>
+  <style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+}
+
+.header-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.header-info h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.university {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.navigation {
+  background-color: #2c3e50;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: white;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.nav-btn:hover {
+  background-color: #34495e;
+}
+
+.nav-btn.active {
+  background-color: #3498db;
+}
+
+.main-content {
+  padding: 2rem;
+  min-height: 500px;
+}
+
+.content-section {
+  display: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.content-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content-section h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.info-item {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
+
+.info-item strong {
+  display: block;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.education-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #3498db;
+}
+
+.education-item {
+  position: relative;
+  margin-bottom: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.education-item::before {
+  content: '';
+  position: absolute;
+  left: -1.75rem;
+  top: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #3498db;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.education-year {
+  background-color: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.education-details {
+  padding: 1.5rem;
+}
+
+.education-details h4 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.institution {
+  color: #7f8c8d;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.thesis-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.thesis-main {
+  padding: 2rem;
+}
+
+.thesis-main h4 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.thesis-main h5 {
+  color: #3498db;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+}
+
+.thesis-details p {
+  margin-bottom: 1rem;
+}
+
+.thesis-details ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.thesis-details li {
+  margin-bottom: 0.5rem;
+}
+
+.youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.video-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.video-info {
+  padding: 1rem;
+}
+
+.video-info h4 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.video-info p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.video-stats {
+  color: #95a5a6;
+  font-size: 0.8rem;
+}
+
+.github-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-top: 4px solid #3498db;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-header h4 {
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.language {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.project-description {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.project-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  color: #95a5a6;
+  font-size: 0.9rem;
+}
+
+.project-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.topic {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .profile-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .header-info h1 {
+    font-size: 2rem;
+  }
+  
+  .navigation {
+    flex-direction: column;
+  }
+  
+  .nav-btn {
+    flex: none;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .education-timeline {
+    padding-left: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="profile-section">
+        <img 
+          src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" 
+          onerror="this.src='https://dummyimage.com/200x200/e5e5e5/666666?text=Profile+Photo'"
+          alt="Maziar Davoodi Mehr" 
+          class="profile-image"
+        >
+        <div class="header-info">
+          <h1 class="name">Maziar Davoodi Mehr</h1>
+          <h2 class="title">PhD Student in Aerodynamic Engineering</h2>
+          <p class="university">Science and Research Branch, Islamic Azad University (SRBIAU)</p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="navigation">
+      <button class="nav-btn active" data-section="personal">Personal Information</button>
+      <button class="nav-btn" data-section="education">Education</button>
+      <button class="nav-btn" data-section="thesis">My Thesis</button>
+      <button class="nav-btn" data-section="youtube">YouTube Videos</button>
+      <button class="nav-btn" data-section="github">GitHub Projects</button>
+    </nav>
+
+    <main class="main-content">
+      <section id="personal" class="content-section active">
+        <h3>Personal Information</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <strong>Full Name:</strong>
+            <span>Maziar Davoodi Mehr</span>
+          </div>
+          <div class="info-item">
+            <strong>Field of Study:</strong>
+            <span>Aerodynamic Engineering</span>
+          </div>
+          <div class="info-item">
+            <strong>Current Position:</strong>
+            <span>PhD Student</span>
+          </div>
+          <div class="info-item">
+            <strong>University:</strong>
+            <span>Science and Research Branch, Islamic Azad University (SRBIAU)</span>
+          </div>
+          <div class="info-item">
+            <strong>Email:</strong>
+            <span>maziar.davoodi@example.com</span>
+          </div>
+          <div class="info-item">
+            <strong>Location:</strong>
+            <span>Tehran, Iran</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="content-section">
+        <h3>Education</h3>
+        <div class="education-timeline">
+          <div class="education-item">
+            <div class="education-year">2022 - Present</div>
+            <div class="education-details">
+              <h4>PhD in Aerodynamic Engineering</h4>
+              <p class="institution">Science and Research Branch, Islamic Azad University (SRBIAU)</p>
+              <p class="description">Specializing in advanced aerodynamic principles, computational fluid dynamics, and aerospace engineering applications.</p>
+            </div>
+          </div>
+          <div class="education-item">
+            <div class="education-year">2018 - 2021</div>
+            <div class="education-details">
+              <h4>Master of Science in Aerospace Engineering</h4>
+              <p class="institution">University Name</p>
+              <p class="description">Focused on aerodynamics, propulsion systems, and aircraft design principles.</p>
+            </div>
+          </div>
+          <div class="education-item">
+            <div class="education-year">2014 - 2018</div>
+            <div class="education-details">
+              <h4>Bachelor of Science in Mechanical Engineering</h4>
+              <p class="institution">University Name</p>
+              <p class="description">Foundation in mechanical engineering principles with emphasis on fluid mechanics and thermodynamics.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="thesis" class="content-section">
+        <h3>My Thesis</h3>
+        <div class="thesis-container">
+          <div class="thesis-main">
+            <h4>PhD Thesis Topic</h4>
+            <h5>Advanced Computational Analysis of Aerodynamic Performance in Modern Aircraft Design</h5>
+            <div class="thesis-details">
+              <p><strong>Research Focus:</strong> Investigating the application of computational fluid dynamics (CFD) in optimizing aerodynamic efficiency for next-generation aircraft designs.</p>
+              
+              <p><strong>Objectives:</strong></p>
+              <ul>
+                <li>Develop novel CFD methodologies for complex aerodynamic simulations</li>
+                <li>Analyze the impact of various design parameters on aerodynamic performance</li>
+                <li>Create optimization algorithms for improved fuel efficiency</li>
+                <li>Validate computational results through experimental testing</li>
+              </ul>
+
+              <p><strong>Expected Contributions:</strong> This research aims to contribute to the field of aerodynamic engineering by providing new insights into computational modeling techniques and their practical applications in aircraft design optimization.</p>
+
+              <p><strong>Supervisor:</strong> Dr. [Supervisor Name]</p>
+              <p><strong>Expected Completion:</strong> 2025</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="youtube" class="content-section">
+        <h3>YouTube Videos</h3>
+        <div class="youtube-grid">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img 
+                src="https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=640" 
+                onerror="this.src='https://dummyimage.com/320x180/e5e5e5/666666?text=Video+Thumbnail'"
+                alt="Aerodynamics Basics"
+              >
+              <div class="play-button">▶</div>
+            </div>
+            <div class="video-info">
+              <h4>Introduction to Aerodynamics</h4>
+              <p>Basic principles of aerodynamics explained for engineering students</p>
+              <span class="video-stats">15K views • 2 months ago</span>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img 
+                src="https://images.pexels.com/photos/2159065/pexels-photo-2159065.jpeg?auto=compress&cs=tinysrgb&w=640" 
+                onerror="this.src='https://dummyimage.com/320x180/e5e5e5/666666?text=CFD+Tutorial'"
+                alt="CFD Tutorial"
+              >
+              <div class="play-button">▶</div>
+            </div>
+            <div class="video-info">
+              <h4>CFD Simulation Tutorial</h4>
+              <p>Step-by-step guide to computational fluid dynamics simulation</p>
+              <span class="video-stats">8.2K views • 1 month ago</span>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img 
+                src="https://images.pexels.com/photos/1181345/pexels-photo-1181345.jpeg?auto=compress&cs=tinysrgb&w=640" 
+                onerror="this.src='https://dummyimage.com/320x180/e5e5e5/666666?text=Aircraft+Design'"
+                alt="Aircraft Design"
+              >
+              <div class="play-button">▶</div>
+            </div>
+            <div class="video-info">
+              <h4>Aircraft Design Fundamentals</h4>
+              <p>Understanding the key principles of modern aircraft design</p>
+              <span class="video-stats">12K views • 3 weeks ago</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="github" class="content-section">
+        <h3>GitHub Projects</h3>
+        <div class="github-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <h4>Aerodynamic-CFD-Solver</h4>
+              <span class="language">Python</span>
+            </div>
+            <p class="project-description">
+              A computational fluid dynamics solver specifically designed for aerodynamic applications. 
+              Includes various numerical methods and visualization tools.
+            </p>
+            <div class="project-stats">
+              <span class="stat">⭐ 45 stars</span>
+              <span class="stat">🍴 12 forks</span>
+              <span class="stat">📝 Python</span>
+            </div>
+            <div class="project-topics">
+              <span class="topic">cfd</span>
+              <span class="topic">aerodynamics</span>
+              <span class="topic">python</span>
+              <span class="topic">numerical-methods</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h4>Wind-Tunnel-Data-Analysis</h4>
+              <span class="language">MATLAB</span>
+            </div>
+            <p class="project-description">
+              MATLAB scripts and tools for analyzing wind tunnel experimental data. 
+              Includes data processing, visualization, and statistical analysis functions.
+            </p>
+            <div class="project-stats">
+              <span class="stat">⭐ 23 stars</span>
+              <span class="stat">🍴 8 forks</span>
+              <span class="stat">📝 MATLAB</span>
+            </div>
+            <div class="project-topics">
+              <span class="topic">matlab</span>
+              <span class="topic">wind-tunnel</span>
+              <span class="topic">data-analysis</span>
+              <span class="topic">experimental</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h4>Airfoil-Optimization-Tool</h4>
+              <span class="language">C++</span>
+            </div>
+            <p class="project-description">
+              An optimization tool for airfoil design using genetic algorithms and gradient-based methods. 
+              Integrates with popular CFD solvers for performance evaluation.
+            </p>
+            <div class="project-stats">
+              <span class="stat">⭐ 67 stars</span>
+              <span class="stat">🍴 19 forks</span>
+              <span class="stat">📝 C++</span>
+            </div>
+            <div class="project-topics">
+              <span class="topic">cpp</span>
+              <span class="topic">optimization</span>
+              <span class="topic">airfoil</span>
+              <span class="topic">genetic-algorithm</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <h4>Aerospace-Engineering-Utils</h4>
+              <span class="language">JavaScript</span>
+            </div>
+            <p class="project-description">
+              A collection of utility functions and calculators for aerospace engineering applications. 
+              Web-based tools for quick calculations and conversions.
+            </p>
+            <div class="project-stats">
+              <span class="stat">⭐ 31 stars</span>
+              <span class="stat">🍴 7 forks</span>
+              <span class="stat">📝 JavaScript</span>
+            </div>
+            <div class="project-topics">
+              <span class="topic">javascript</span>
+              <span class="topic">aerospace</span>
+              <span class="topic">utilities</span>
+              <span class="topic">web-tools</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Maziar Davoodi Mehr. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const navButtons = document.querySelectorAll('.nav-btn');
+  const contentSections = document.querySelectorAll('.content-section');
+
+  // Navigation functionality
+  navButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetSection = this.getAttribute('data-section');
+      
+      // Remove active class from all buttons and sections
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      contentSections.forEach(section => section.classList.remove('active'));
+      
+      // Add active class to clicked button and corresponding section
+      this.classList.add('active');
+      document.getElementById(targetSection).classList.add('active');
+    });
+  });
+
+  // Video card click functionality
+  const videoCards = document.querySelectorAll('.video-card');
+  videoCards.forEach(card => {
+    card.addEventListener('click', function() {
+      const videoTitle = this.querySelector('h4').textContent;
+      alert(`Opening video: ${videoTitle}\n\nThis would normally open the YouTube video in a new tab.`);
+    });
+  });
+
+  // Project card click functionality
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    card.addEventListener('click', function() {
+      const projectName = this.querySelector('h4').textContent;
+      alert(`Opening GitHub project: ${projectName}\n\nThis would normally open the GitHub repository in a new tab.`);
+    });
+  });
+
+  // Smooth scrolling for navigation
+  function smoothScrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
+  // Add keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.metaKey) {
+      const keyMap = {
+        '1': 'personal',
+        '2': 'education',
+        '3': 'thesis',
+        '4': 'youtube',
+        '5': 'github'
+      };
+      
+      if (keyMap[e.key]) {
+        e.preventDefault();
+        const targetButton = document.querySelector(`[data-section="${keyMap[e.key]}"]`);
+        if (targetButton) {
+          targetButton.click();
+        }
+      }
+    }
+  });
+
+  // Add loading animation for sections
+  function addLoadingAnimation() {
+    contentSections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+    });
+
+    // Show active section with animation
+    const activeSection = document.querySelector('.content-section.active');
+    if (activeSection) {
+      setTimeout(() => {
+        activeSection.style.opacity = '1';
+        activeSection.style.transform = 'translateY(0)';
+      }, 100);
+    }
+  }
+
+  // Initialize animations
+  addLoadingAnimation();
+
+  // Add hover effects for interactive elements
+  const interactiveElements = document.querySelectorAll('.video-card, .project-card, .nav-btn');
+  interactiveElements.forEach(element => {
+    element.addEventListener('mouseenter', function() {
+      this.style.cursor = 'pointer';
+    });
+  });
+
+  // Print functionality
+  function addPrintStyles() {
+    const printButton = document.createElement('button');
+    printButton.textContent = 'Print Resume';
+    printButton.style.position = 'fixed';
+    printButton.style.bottom = '20px';
+    printButton.style.right = '20px';
+    printButton.style.backgroundColor = '#3498db';
+    printButton.style.color = 'white';
+    printButton.style.border = 'none';
+    printButton.style.padding = '10px 20px';
+    printButton.style.borderRadius = '5px';
+    printButton.style.cursor = 'pointer';
+    printButton.style.zIndex = '1000';
+    
+    printButton.addEventListener('click', function() {
+      window.print();
+    });
+    
+    document.body.appendChild(printButton);
+  }
+
+  // Initialize print functionality
+  addPrintStyles();
+
+  // Add responsive navigation toggle for mobile
+  function addMobileNavigation() {
+    if (window.innerWidth <= 768) {
+      const navigation = document.querySelector('.navigation');
+      let isNavOpen = false;
+      
+      const toggleButton = document.createElement('button');
+      toggleButton.textContent = '☰ Menu';
+      toggleButton.style.display = 'block';
+      toggleButton.style.width = '100%';
+      toggleButton.style.backgroundColor = '#2c3e50';
+      toggleButton.style.color = 'white';
+      toggleButton.style.border = 'none';
+      toggleButton.style.padding = '1rem';
+      toggleButton.style.cursor = 'pointer';
+      
+      toggleButton.addEventListener('click', function() {
+        isNavOpen = !isNavOpen;
+        const navButtons = document.querySelectorAll('.nav-btn');
+        navButtons.forEach(btn => {
+          btn.style.display = isNavOpen ? 'block' : 'none';
+        });
+        this.textContent = isNavOpen ? '✕ Close' : '☰ Menu';
+      });
+      
+      navigation.insertBefore(toggleButton, navigation.firstChild);
+      
+      // Hide nav buttons initially on mobile
+      const navButtons = document.querySelectorAll('.nav-btn');
+      navButtons.forEach(btn => {
+        btn.style.display = 'none';
+      });
+    }
+  }
+
+  // Initialize mobile navigation
+  addMobileNavigation();
+
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      const navButtons = document.querySelectorAll('.nav-btn');
+      navButtons.forEach(btn => {
+        btn.style.display = 'flex';
+      });
+      
+      const toggleButton = document.querySelector('.navigation button:first-child');
+      if (toggleButton && toggleButton.textContent.includes('Menu')) {
+        toggleButton.remove();
+      }
+    }
+  });
+});
+  </script>
+</body>
+</html>
